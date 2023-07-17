@@ -1,0 +1,33 @@
+def calcular_ganador(votos):
+    conteo_votos = {}
+
+    # Contar los votos para cada candidato
+    for voto in votos:
+        if voto in conteo_votos:
+            conteo_votos[voto] += 1
+        else:
+            conteo_votos[voto] = 1
+
+    max_votos = max(conteo_votos.values())
+    ganadores = [candidato for candidato, num_votos in conteo_votos.items() if num_votos == max_votos]
+
+    if len(ganadores) > 1:
+        return "EMPATE"
+    else:
+        return ganadores[0]
+
+
+# Leer el número de votos
+n = int(input())
+
+# Leer los votos
+votos = []
+for _ in range(n):
+    voto = input()
+    votos.append(voto)
+
+# Calcular el ganador
+ganador = calcular_ganador(votos)
+
+# Imprimir el resultado
+print(ganador)
